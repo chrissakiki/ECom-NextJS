@@ -8,7 +8,7 @@ import {
 const Footer = () => {
   return (
     <div className="footer-container">
-      <p>2022 Virgin Megastore All Rights Reserved</p>
+      <p>2022 M3 All Rights Reserved</p>
       <p className="icons">
         <AiFillInstagram />
         <AiOutlineTwitter />
