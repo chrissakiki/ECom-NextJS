@@ -7,6 +7,7 @@ const Success = () => {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useAppContext();
 
   React.useEffect(() => {
+    localStorage.removeItem("CAE");
     setCartItems([]);
     setTotalPrice(0);
     setTotalQuantities(0);
