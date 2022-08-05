@@ -91,11 +91,14 @@ const ProductDetails = ({ product, similarProducts }) => {
         <h2>You may also like</h2>
         <div className="marquee">
           <div className="maylike-products-container track">
-            {similarProducts.map((product) => (
-              <React.Fragment key={product._id}>
-                <Product product={product} />
-              </React.Fragment>
-            ))}
+            {similarProducts.map((p) => {
+              if (p._id === product._id) return;
+              return (
+                <React.Fragment key={p._id}>
+                  <Product product={p} />
+                </React.Fragment>
+              );
+            })}
           </div>
         </div>
       </div>
