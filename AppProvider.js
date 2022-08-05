@@ -53,7 +53,6 @@ const AppProvider = ({ children }) => {
     }
     setQty(1);
     toast.success(`${qty} ${product.name} has been added to your cart`);
-    console.log(cartItems);
   };
 
   const removeItem = (product) => {
