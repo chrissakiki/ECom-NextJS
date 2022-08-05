@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BsBagCheckFill } from "react-icons/bs";
 import { useAppContext } from "../AppProvider";
 import { runFireworks } from "../lib/utils";
-const success = () => {
+const Success = () => {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useAppContext();
 
   React.useEffect(() => {
@@ -38,4 +38,4 @@ const success = () => {
   );
 };
 
-export default success;
+export default Success;
