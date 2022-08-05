@@ -6,6 +6,7 @@ import {
   AiOutlineLeft,
   AiOutlineShoppingCart,
   AiFillDelete,
+  AiOutlineLoading3Quarters,
 } from "react-icons/ai";
 import toast from "react-hot-toast";
 import { useAppContext } from "../AppProvider";
@@ -24,6 +25,7 @@ const Cart = () => {
   } = useAppContext();
   const cartRef = useRef();
 
+  const [loading, setLoading] = React.useState(false);
   React.useEffect(() => {
     const close = (e) => {
       if (!cartRef.current.contains(e.target)) {
@@ -38,12 +40,15 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     const stripe = await getStripe();
-
+    setLoading(true);
     try {
       const { data } = await axios.post("/api/stripe", { cartItems });
       toast.loading("Redirecting...");
       stripe.redirectToCheckout({ sessionId: data.id });
+      setLoading(false);
     } catch (error) {
+      toast.error("something went wrong!");
+      setLoading(false);
       return Promise.reject(error);
     }
   };
@@ -133,7 +138,11 @@ const Cart = () => {
             </div>
             <div className="btn-container">
               <button type="button" className="btn" onClick={handleCheckout}>
-                Checkout
+                {loading ? (
+                  <AiOutlineLoading3Quarters className="spin" />
+                ) : (
+                  "Checkout"
+                )}
               </button>
             </div>
           </div>

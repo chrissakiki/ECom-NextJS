@@ -655,6 +655,16 @@ span.text-red {
   margin-top: 10px;
 }
 
+.spin {
+  animation: spinner 2s linear infinite;
+}
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @media screen and (max-width: 970px) {
   .hero-banner-container h1 {
     z-index: 1000;
