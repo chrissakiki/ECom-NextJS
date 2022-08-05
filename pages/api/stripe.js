@@ -14,30 +14,30 @@ export default async function handler(req, res) {
           { shipping_rate: "shr_1LSnY3Jzqh0M1Y88FZLJb9cy" },
           { shipping_rate: "shr_1LSnXFJzqh0M1Y88axdolsqm" },
         ],
-        line_items: req.body.cartItems.map((item) => {
-          const img = item.image[0].asset._ref;
-          const newImage = img
-            .replace(
-              "image-",
-              "https://cdn.sanity.io/images/8jyor93h/production/"
-            )
-            .replace("-webp", ".webp");
-          return {
-            price_data: {
-              currency: "usd",
-              product_data: {
-                name: item.name,
-                images: [newImage],
-              },
-              unit_amount: item.price * 100,
-            },
-            adjustable_quantity: {
-              enabled: true,
-              minimum: 1,
-            },
-            quantity: item.quantity,
-          };
-        }),
+        // line_items: req.body.cartItems.map((item) => {
+        //   const img = item.image[0].asset._ref;
+        //   const newImage = img
+        //     .replace(
+        //       "image-",
+        //       "https://cdn.sanity.io/images/8jyor93h/production/"
+        //     )
+        //     .replace("-webp", ".webp");
+        //   return {
+        //     price_data: {
+        //       currency: "usd",
+        //       product_data: {
+        //         name: item.name,
+        //         images: [newImage],
+        //       },
+        //       unit_amount: item.price * 100,
+        //     },
+        //     adjustable_quantity: {
+        //       enabled: true,
+        //       minimum: 1,
+        //     },
+        //     quantity: item.quantity,
+        //   };
+        // }),
         success_url: `${req.headers.origin}/success`,
         cancel_url: `${req.headers.origin}/`,
       };
