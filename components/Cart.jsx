@@ -41,16 +41,20 @@ const Cart = () => {
   const handleCheckout = async () => {
     const stripe = await getStripe();
     setLoading(true);
-    try {
-      const { data } = await axios.post("/api/stripe", { cartItems });
-      toast.loading("Redirecting...");
-      stripe.redirectToCheckout({ sessionId: data.id });
-      setLoading(false);
-    } catch (error) {
-      toast.error("something went wrong!");
-      setLoading(false);
-      return Promise.reject(error);
-    }
+    const response = await fetch("/api/stripe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    if (response.statusCode === 500) return;
+
+    const data = await response.json();
+    toast.loading("Redirecting..");
+    stripe.redirectToCheckout({ sessionId: data.id });
+    setLoading(false);
   };
   return (
     <div className="cart-wrapper">
