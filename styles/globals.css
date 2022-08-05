@@ -871,10 +871,14 @@ span.text-red {
     min-height: 90vh;
   }
 
+  .cart-bottom {
+    bottom: 5px;
+  }
+
   .product-container {
     margin-top: 15px;
     overflow-y: auto;
-    max-height: 60vh;
+    max-height: 65vh;
     padding: 15px 10px;
   }
 
