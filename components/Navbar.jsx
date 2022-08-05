@@ -17,15 +17,17 @@ const Navbar = () => {
         </div>
       </Link>
 
-      <button
-        type="button"
-        className="cart-icon"
-        onClick={() => setShowCart(true)}
-      >
-        <AiOutlineShoppingCart />
-        <span className="cart-item-qty">{totalQuantities}</span>
-      </button>
-      {showCart && <Cart />}
+      <div className="cart-nav-container">
+        <button
+          type="button"
+          className="cart-icon"
+          onClick={() => setShowCart(true)}
+        >
+          <AiOutlineShoppingCart />
+          <span className="cart-item-qty">{totalQuantities}</span>
+        </button>
+        {showCart && <Cart />}
+      </div>
     </div>
   );
 };
