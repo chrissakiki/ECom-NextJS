@@ -4,7 +4,6 @@ const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
-    console.log(req.body);
     try {
       const params = {
         submit_type: "pay",
@@ -15,7 +14,7 @@ export default async function handler(req, res) {
           { shipping_rate: "shr_1LSnY3Jzqh0M1Y88FZLJb9cy" },
           { shipping_rate: "shr_1LSnXFJzqh0M1Y88axdolsqm" },
         ],
-        line_items: req.body.map((item) => {
+        line_items: req.body.cartItems.map((item) => {
           const img = item.image[0].asset._ref;
           const newImage = img
             .replace(
