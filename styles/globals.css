@@ -868,6 +868,14 @@ span.text-red {
   .cart-container {
     width: 340px;
     padding: 4px;
+    min-height: 90vh;
+  }
+
+  .product-container {
+    margin-top: 15px;
+    overflow-y: auto;
+    max-height: 60vh;
+    padding: 15px 10px;
   }
 
   .item-desc .flex {
